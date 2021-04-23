@@ -16,8 +16,8 @@ class CreateFinancialOrganizationsTable extends Migration
         Schema::create('financial_organizations', function (Blueprint $table) {
            $table->increments('id');
             
-            $table->string('name',150);
-            $table->string('short_name',50)->nullable();
+            $table->string('name');
+            $table->string('short_name')->nullable();
              $table->text('address')->nullable();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
             $table->timestamps();
