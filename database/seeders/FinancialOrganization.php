@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use DB;
-use Str;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 class FinancialOrganization extends Seeder
 {
     /**
@@ -30,6 +30,18 @@ class FinancialOrganization extends Seeder
             'short_name' => Str::random(10),
             'address' => Str::random(10),
         ]);
+        DB::table('users')->insert([
+            'name' => Str::random(10),
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('12345678'),
+            'user_type' =>'admin',
+        ]);
+        DB::table('users')->insert([
+            'name' => Str::random(10),
+            'email' => 'user@user.com',
+            'password' => Hash::make('12345678'),
+            'user_type' =>'user',
+        ]);		 
     }
 }
 
