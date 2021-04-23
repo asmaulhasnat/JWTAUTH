@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JwtAuthController;
+//use App\Http\Controllers\BankAccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,8 @@ use App\Http\Controllers\JwtAuthController;
 |
 */
 
+
+
 Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
@@ -24,4 +27,8 @@ Route::group([
     Route::get('/user', [JwtAuthController::class, 'user']);
     Route::post('/token-refresh', [JwtAuthController::class, 'refresh']);
     Route::post('/signout', [JwtAuthController::class, 'signout']);
+
+    Route::resource('/bank-account', 'App\Http\Controllers\BankAccountController');
+   // Route::resource('/bank', 'App\Http\Controllers\FinancialOrganizationController');
+    
 });

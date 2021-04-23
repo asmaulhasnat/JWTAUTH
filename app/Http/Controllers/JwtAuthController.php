@@ -26,7 +26,7 @@ class JwtAuthController extends Controller
         ]);
 
         if ($req->fails()) {
-            return response()->json($req->errors(), 422);
+            return response()->json(['error'=>$req->errors()], 200);
         }
 
         if (! $token = auth()->attempt($req->validated())) {
@@ -50,7 +50,7 @@ class JwtAuthController extends Controller
         ]);
 
         if($req->fails()){
-            return response()->json($req->errors()->toJson(), 400);
+            return response()->json(['error'=>$req->errors()], 200);
         }
 
         $user = User::create(array_merge(
@@ -61,7 +61,7 @@ class JwtAuthController extends Controller
         return response()->json([
             'message' => 'User signed up',
             'user' => $user
-        ], 201);
+        ], 200);
     }
 
 
