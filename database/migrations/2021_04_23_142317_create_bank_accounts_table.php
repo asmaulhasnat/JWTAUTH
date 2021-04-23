@@ -15,15 +15,15 @@ class CreateBankAccountsTable extends Migration
     {
         Schema::create('bank_accounts', function (Blueprint $table) {
             $table->increments('id');
-            $table->smallInteger('financial_organization_id')->comment = 'Bank table primary id';
-            $table->bigInteger('store_id')->nullable();
-            $table->string('account_name');
-            $table->string('account_no')->nullable();
-             $table->string('branch')->nullable();
-            $table->tinyInteger('account_type')->nullable()->comment = '1 = Savings Account, 2 = Current
+            $table->smallInteger('financial_organization_id',6)->comment = 'Bank table primary id';
+            $table->bigInteger('store_id',20)->nullable();
+            $table->string('account_name',255);
+            $table->string('account_no',100)->nullable();
+             $table->string('branch',50)->nullable();
+            $table->tinyInteger('account_type',1)->nullable()->comment = '1 = Savings Account, 2 = Current
 Account, 3 = Joint Account';
-            $table->string('swift_code')->nullable();
-            $table->string('route_no')->nullable();
+            $table->string('swift_code',100)->nullable();
+            $table->string('route_no',100)->nullable();
            
             $table->softDeletes($column = 'deleted_at', $precision = 0);
             $table->timestamps();
